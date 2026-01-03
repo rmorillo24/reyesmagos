@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Sorpresa Especial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .step-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .progress-bar {
+            background: #e5e7eb;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #f093fb 100%);
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        .question {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option-btn {
+            padding: 25px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #374151;
+            background: linear-gradient(135deg, #f3e7ff 0%, #fce7f3 100%);
+            border: 3px solid #d8b4fe;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            transform: scale(1.05);
+            border-color: #a78bfa;
+            box-shadow: 0 10px 30px rgba(167, 139, 250, 0.3);
+        }
+
+        .hint {
+            text-align: center;
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 20px;
+        }
+
+        /* Estilos para la página final */
+        .final-reveal {
+            text-align: center;
+        }
+
+        .icon-plane {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .final-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 30px;
+        }
+
+        .gift-box {
+            background: linear-gradient(135deg, #fce7f3 0%, #f3e7ff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .gift-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #374151;
+            margin-bottom: 20px;
+        }
+
+        .gift-subtitle {
+            font-size: 20px;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        .destination-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .destination-btn {
+            padding: 20px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+
+        .destination-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-paris {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .btn-london {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .btn-milan {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .heart-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #6b7280;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .heart {
+            color: #ef4444;
+            font-size: 24px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .final-note {
+            background: #fef3c7;
+            border: 3px solid #fde047;
+            border-radius: 15px;
+            padding: 20px;
+            color: #374151;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            font-size: 30px;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .final-title {
+                font-size: 36px;
+            }
+            .gift-title {
+                font-size: 24px;
+            }
+            .destination-btn {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const questions = [
+            {
+                question: "Si pudieras viajar en el tiempo, ¿preferirías...?",
+                options: [
+                    "Visitar el Renacimiento italiano 🎨",
+                    "Explorar la Belle Époque parisina 🗼"
+                ]
+            },
+            {
+                question: "¿Qué suena más emocionante?",
+                options: [
+                    "Descubrir un museo secreto 🖼️",
+                    "Pasear por calles empedradas antiguas 🚶‍♀️"
+                ]
+            },
+            {
+                question: "En tu maleta ideal nunca faltaría...",
+                options: [
+                    "Una cámara para capturar momentos 📸",
+                    "Un diario para escribir aventuras ✍️"
+                ]
+            },
+            {
+                question: "¿Qué te hace más feliz?",
+                options: [
+                    "Probar comida exótica en lugares nuevos 🍝",
+                    "Compartir risas con alguien especial 😊"
+                ]
+            },
+            {
+                question: "Si tuvieras que elegir un compañero de aventuras...",
+                options: [
+                    "Alguien que te conoce de toda la vida 💕",
+                    "Alguien que siempre te hace sonreír 🌟"
+                ]
+            },
+            {
+                question: "¿Qué prefiere tu corazón viajero?",
+                options: [
+                    "Arquitectura impresionante 🏛️",
+                    "Cafés con encanto escondidos ☕"
+                ]
+            },
+            {
+                question: "El mejor recuerdo de un viaje es...",
+                options: [
+                    "Las fotos que tomaste 📷",
+                    "Las experiencias que viviste 🌈"
+                ]
+            },
+            {
+                question: "¿Qué idioma te gustaría escuchar más?",
+                options: [
+                    "Francés romántico 🇫🇷",
+                    "Italiano melódico 🇮🇹"
+                ]
+            },
+            {
+                question: "En un viaje perfecto nunca falta...",
+                options: [
+                    "Sorpresas inesperadas 🎁",
+                    "Momentos inolvidables ⭐"
+                ]
+            },
+            {
+                question: "¿Estás lista para una última pregunta especial?",
+                options: [
+                    "¡Sí, dime más! 🤔",
+                    "¡Estoy intrigada! 😮"
+                ]
+            }
+        ];
+
+        let currentStep = 0;
+
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti';
+            
+            const emojis = ['✨', '🎉', '🎊', '⭐', '💫', '🌟'];
+            
+            for (let i = 0; i < 50; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.animationDelay = Math.random() * 3 + 's';
+                piece.style.animationDuration = (3 + Math.random() * 2) + 's';
+                confettiContainer.appendChild(piece);
+            }
+            
+            return confettiContainer;
+        }
+
+        function renderFinalReveal() {
+            const app = document.getElementById('app');
+            app.innerHTML = `
+                <div class="container final-reveal">
+                    <div class="icon-plane">✈️</div>
+                    <h1 class="final-title">¡SORPRESA! 🎉</h1>
+                    
+                    <div class="gift-box">
+                        <p class="gift-title">¡Nos vamos de viaje juntos!</p>
+                        <p class="gift-subtitle">Elige tu ciudad favorita:</p>
+                        <div class="destination-buttons">
+                            <a href="paris.html" class="destination-btn btn-paris">París 🗼</a>
+                            <a href="london.html" class="destination-btn btn-london">Londres 🎡</a>
+                            <a href="milan.html" class="destination-btn btn-milan">Milán 🏛️</a>
+                        </div>
+                    </div>
+                    
+                    <div class="heart-line">
+                        <span class="heart">❤️</span>
+                        <p>Un viaje especial para crear recuerdos inolvidables</p>
+                        <span class="heart">❤️</span>
+                    </div>
+                    
+                    <div class="final-note">
+                        ¡Prepara tu maleta y haz clic en tu ciudad favorita!<br>
+                        La aventura nos espera ✈️💕
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(createConfetti());
+        }
+
+        function renderQuestion() {
+            if (currentStep >= questions.length) {
+                renderFinalReveal();
+                return;
+            }
+
+            const question = questions[currentStep];
+            const progress = ((currentStep + 1) / questions.length) * 100;
+
+            const app = document.getElementById('app');
+            app.innerHTML = `
+                <div class="container">
+                    <div class="header">
+                        <div class="step-info">
+                            <span>✨</span>
+                            <span>Pregunta ${currentStep + 1} de ${questions.length}</span>
+                        </div>
+                        <span style="font-size: 32px;">🎁</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%"></div>
+                    </div>
+
+                    <h2 class="question">${question.question}</h2>
+
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <button class="option-btn" onclick="nextStep()">${option}</button>
+                        `).join('')}
+                    </div>
+
+                    <p class="hint">Cada respuesta te acerca más a descubrir algo especial... 💫</p>
+                </div>
+            `;
+        }
+
+        function nextStep() {
+            currentStep++;
+            renderQuestion();
+        }
+
+        // Inicializar la aplicación
+        renderQuestion();
+    </script>
+</body>
+</html>
