@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destino: París</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 0;
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .image-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .city-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .city-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+        }
+
+        .city-emoji {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 20px;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .highlights {
+            background: linear-gradient(135deg, #fce7f3 0%, #f3e7ff 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .highlights h3 {
+            font-size: 24px;
+            color: #374151;
+            margin-bottom: 15px;
+        }
+
+        .highlights-list {
+            text-align: left;
+            color: #6b7280;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .highlights-list li {
+            margin-left: 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .heart-line {
+            margin-top: 30px;
+            color: #ef4444;
+            font-size: 24px;
+        }
+
+        @media (max-width: 640px) {
+            .city-title {
+                font-size: 36px;
+            }
+            .image-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200&h=800&fit=crop" 
+                 alt="París" 
+                 class="city-image">
+        </div>
+        <div class="content">
+            <div class="city-emoji">🗼</div>
+            <h1 class="city-title">¡Nos vamos a París!</h1>
+            <p class="description">
+                La Ciudad de la Luz nos espera con sus calles románticas, 
+                su arte incomparable y su encanto inigualable.
+            </p>
+            
+            <div class="highlights">
+                <h3>Lo que nos espera:</h3>
+                <ul class="highlights-list">
+                    <li>🗼 La Torre Eiffel al atardecer</li>
+                    <li>🎨 El Museo del Louvre y sus tesoros</li>
+                    <li>🥐 Croissants recién horneados en Montmartre</li>
+                    <li>🌉 Paseos por el Sena</li>
+                    <li>✨ Magia parisina en cada esquina</li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="back-btn">← Ver otras opciones</a>
+            
+            <div class="heart-line">
+                ❤️ Juntos en París ❤️
+            </div>
+        </div>
+    </div>
+</body>
+</html>
